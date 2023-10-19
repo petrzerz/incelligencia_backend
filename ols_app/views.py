@@ -1,9 +1,10 @@
 from rest_framework import viewsets
-from .models import EFOTerm, EFOTermSynonym, EFOTermOntology
-from .serializers import EFOTermSerializer, EFOTermSynonymSerializer, EFOTermOntologySerializer
+
+from .models import EFOTerm, EFOTermSynonym, EFOTermOntology, EFOTermDescription
+from .serializers import EFOTermSerializer, EFOTermSynonymSerializer, EFOTermOntologySerializer, \
+    EFOTermDescriptionSerializer
 
 
-# Create your views here.
 class EFOTermViewSet(viewsets.ModelViewSet):
     serializer_class = EFOTermSerializer
     resource_name = 'efoterms'
@@ -18,6 +19,14 @@ class EFOTermSynonymViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return EFOTermSynonym.objects.all()
+
+
+class EFOTermDescriptionViewSet(viewsets.ModelViewSet):
+    serializer_class = EFOTermDescriptionSerializer
+    resource_name = 'efotermdescriptions'
+
+    def get_queryset(self):
+        return EFOTermDescription.objects.all()
 
 
 class EFOTermOntologyViewSet(viewsets.ModelViewSet):

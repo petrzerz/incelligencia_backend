@@ -4,12 +4,17 @@ from django.db import models
 class EFOTerm(models.Model):
     term_id = models.CharField(max_length=255, unique=True)
     label = models.CharField()
-    iri = models.URLField()
+    iri = models.TextField()
 
 
 class EFOTermSynonym(models.Model):
     term = models.ForeignKey(EFOTerm, related_name='synonyms', on_delete=models.CASCADE)
     synonym = models.CharField(max_length=255)
+
+
+class EFOTermDescription(models.Model):
+    term = models.ForeignKey(EFOTerm, related_name='descriptions', on_delete=models.CASCADE)
+    description = models.TextField()
 
 
 class EFOTermOntology(models.Model):
