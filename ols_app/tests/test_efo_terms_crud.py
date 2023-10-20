@@ -1,7 +1,5 @@
 from ols_app.models import EFOTerm
 
-from ols_app.models import *
-
 
 def test_post_efo_term(db, api_client, efo_term_data):
     response = api_client.post('/api/efoterms', efo_term_data, format='json')
