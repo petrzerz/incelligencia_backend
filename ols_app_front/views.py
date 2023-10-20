@@ -1,14 +1,25 @@
+from ols_app.models import EFOTerm
 from rest_framework import viewsets
-from django.contrib.postgres.aggregates import ArrayAgg
+from rest_framework.decorators import action
 
 from .serializers import EFOTermTableSerializer
-from ols_app.models import EFOTerm
+from ols.pagination_decorator import paginate
 
 
 class EFOTermTableViewSet(viewsets.ModelViewSet):
     serializer_class = EFOTermTableSerializer
     resource_name = 'efotermtabe'
+    http_method_names = ['get']
+
+    @paginate
+    @action(detail=True)
+    def parents(self, request, pk=None):
+        return EFOTerm.objects.filter(children__child=pk)
+
+    @paginate
+    @action(detail=True)
+    def children(self, request, pk=None):
+        return EFOTerm.objects.filter(parents__parent=pk)
 
     def get_queryset(self):
-        return EFOTerm.objects.annotate(
-            description_arr=ArrayAgg('descriptions__description'), synonyms_arr=ArrayAgg('synonyms__synonym'), )
+        return EFOTerm.objects.all()
