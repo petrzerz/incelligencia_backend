@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 
 
@@ -29,6 +30,14 @@ class EFOTermDescription(models.Model):
 class EFOTermOntology(models.Model):
     parent = models.ForeignKey(EFOTerm, related_name='children', on_delete=models.CASCADE)
     child = models.ForeignKey(EFOTerm, related_name='parents', on_delete=models.CASCADE)
+
+    def is_parent_child_same(self):
+        if self.parent == self.child:
+            raise ValidationError("Terms can't be parents or children of themselves")
+
+    def save(self, *args, **kwargs):
+        self.is_parent_child_same()
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"parent_id: {self.parent}, child_id: {self.child}"
