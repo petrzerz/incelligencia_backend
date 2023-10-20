@@ -1,5 +1,5 @@
-from ols_app.models import EFOTermSynonym
 from faker import Faker
+from ols_app.models import EFOTermSynonym
 
 fake = Faker()
 

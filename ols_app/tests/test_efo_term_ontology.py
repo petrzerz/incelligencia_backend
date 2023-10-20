@@ -1,7 +1,8 @@
-from ols_app.models import EFOTermOntology
 from faker import Faker
+from ols_app.models import EFOTermOntology
 
 fake = Faker()
+
 
 #
 # def test_post_efo_term_description(db, api_client, new_efo_term):
@@ -25,7 +26,6 @@ def test_delete_efo_term_synonym(db, api_client, new_efo_term_ontology):
     assert response.status_code == 204
     count = EFOTermOntology.objects.all().count()
     assert count == 0
-
 
 # def test_patch_efo_term_synonym(db, api_client, new_efo_term_description):
 #     payload = {

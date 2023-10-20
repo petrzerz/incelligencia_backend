@@ -1,6 +1,5 @@
-from ols_app.models import EFOTerm
-
 from faker import Faker
+from ols_app.models import EFOTerm
 
 fake = Faker()
 
