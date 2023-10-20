@@ -20,22 +20,6 @@ def new_efo_term(db, efo_term_factory):
 
 
 @pytest.fixture
-def efo_term_data():
-    return {
-        "term_id": fake.name(),
-        "label": fake.name(),
-        "iri": fake.name()
-    }
-
-
-@pytest.fixture
-def efo_term_patch_data():
-    return {
-        'label': 'patched'
-    }
-
-
-@pytest.fixture
 def new_efo_term_synonym(db, efo_term_synonym_factory):
     efo_term_synonym = efo_term_synonym_factory.create()
     return efo_term_synonym
