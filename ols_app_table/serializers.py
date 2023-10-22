@@ -9,4 +9,4 @@ class EFOTermTableSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = EFOTerm
-        fields = ['id', 'term_id', 'label', 'iri', 'synonyms', 'descriptions']
+        fields = ['term_id', 'label', 'iri', 'synonyms', 'descriptions']

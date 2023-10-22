@@ -7,7 +7,7 @@ fake = Faker()
 
 
 class EFOTermFactory(factory.django.DjangoModelFactory):
-    term_id = factory.Sequence(lambda n: n)
+    term_id = factory.Sequence(lambda n: f'obo-{n}')
     label = fake.name()
     iri = fake.name()
 

@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 
 
 class EFOTerm(models.Model):
-    term_id = models.CharField(max_length=255, unique=True)
+    term_id = models.CharField(max_length=255, primary_key=True)
     label = models.CharField(max_length=255)
     iri = models.URLField()
 
