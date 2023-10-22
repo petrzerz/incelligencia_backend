@@ -7,7 +7,7 @@ fake = Faker()
 
 
 class EFOTermFactory(factory.django.DjangoModelFactory):
-    term_id = fake.name()
+    term_id = factory.Sequence(lambda n: n)
     label = fake.name()
     iri = fake.name()
 
@@ -32,8 +32,8 @@ class EFOTermDescriptionFactory(factory.django.DjangoModelFactory):
 
 
 class EFOTermOntologyFactory(factory.django.DjangoModelFactory):
-    parent = factory.SubFactory(EFOTermFactory, term_id='term_id_1')
-    child = factory.SubFactory(EFOTermFactory, term_id='term_id_2')
+    parent = factory.SubFactory(EFOTermFactory)
+    child = factory.SubFactory(EFOTermFactory)
 
     class Meta:
         model = EFOTermOntology

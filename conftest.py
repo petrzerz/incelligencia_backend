@@ -20,6 +20,12 @@ def new_efo_term(db, efo_term_factory):
 
 
 @pytest.fixture
+def new_efo_term_2(db, efo_term_factory):
+    efo_term = efo_term_factory.create()
+    return efo_term
+
+
+@pytest.fixture
 def new_efo_term_synonym(db, efo_term_synonym_factory):
     efo_term_synonym = efo_term_synonym_factory.create()
     return efo_term_synonym

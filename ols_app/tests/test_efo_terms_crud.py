@@ -8,7 +8,7 @@ def test_post_efo_term(db, api_client):
     request_body = {
         "label": fake.name(),
         "term_id": fake.name(),
-        'iri': fake.name()
+        'iri': fake.url()
     }
     response = api_client.post('/api/efoterms', request_body, format='json')
     assert response.status_code == 201

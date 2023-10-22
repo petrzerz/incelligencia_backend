@@ -5,11 +5,11 @@ fake = Faker()
 
 
 def test_post_efo_term_synonym(db, api_client, new_efo_term):
-    request_body = {
+    payload = {
         "synonym": fake.name(),
         "term": new_efo_term.id
     }
-    response = api_client.post('/api/efotermsynonyms', request_body, format='json')
+    response = api_client.post('/api/efotermsynonyms', payload, format='json')
     assert response.status_code == 201
     count = EFOTermSynonym.objects.all().count()
     assert count == 1

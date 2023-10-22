@@ -5,11 +5,11 @@ fake = Faker()
 
 
 def test_post_efo_term_description(db, api_client, new_efo_term):
-    request_body = {
+    payload = {
         "description": fake.name(),
         "term": new_efo_term.id
     }
-    response = api_client.post('/api/efotermdescriptions', request_body, format='json')
+    response = api_client.post('/api/efotermdescriptions', payload, format='json')
     assert response.status_code == 201
     count = EFOTermDescription.objects.all().count()
     assert count == 1

@@ -1,8 +1,10 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 
 from .models import EFOTerm, EFOTermSynonym, EFOTermOntology, EFOTermDescription
 from .serializers import EFOTermSerializer, EFOTermSynonymSerializer, EFOTermOntologySerializer, \
     EFOTermDescriptionSerializer
+from rest_framework.response import Response
+from rest_framework import serializers
 
 
 class EFOTermViewSet(viewsets.ModelViewSet):
@@ -35,3 +37,9 @@ class EFOTermOntologyViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return EFOTermOntology.objects.all()
+
+    # def create(self, request, *args, **kwargs):
+    #     data = request.data
+    #     if data['parent'] == data['child']:
+    #         raise serializers.ValidationError("ASDAS")
+    #     super().create(request, *args, **kwargs)
