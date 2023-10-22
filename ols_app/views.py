@@ -37,9 +37,3 @@ class EFOTermOntologyViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return EFOTermOntology.objects.all()
-
-    # def create(self, request, *args, **kwargs):
-    #     data = request.data
-    #     if data['parent'] == data['child']:
-    #         raise serializers.ValidationError("ASDAS")
-    #     super().create(request, *args, **kwargs)
