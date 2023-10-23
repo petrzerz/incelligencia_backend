@@ -38,10 +38,10 @@ The term_id on the EFOTerm Table is a representation of the obo_id (string) foun
 
 # Testing
 1. **For testing purposes, the project employs Pytest, Factory boy, and Faker.**
-2. **To run the tests, execute the following command:** ```pytest -rP```
+2. **To run the tests, execute the following command:** <br> ```pytest -rP```
 
 # Data insertion
 1. **You can locate a Python script named "persist_database.py," which facilitates data insertion operations from the OLS API.**
 2. **You can run the script:** <br>```python3 persist_database.py```
 3. **The algorithm utilized by this script is a Depth-First Search (DFS) commencing from the root node of the EFO Term graph, which is accessible via the following URL** <br> ```https://www.ebi.ac.uk/ols/api/ontologies/efo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000030/parents```
-4. **It's essential to note that having 40000+ terms within the EFO Term graph,  the process of inserting all these terms might be time-consuming.** <br> If necessary, you have the option to terminate the process at any point by using the keyboard shortcut: ```Ctrl + C``` 
+4. **It's essential to note that having 40000+ terms within the EFO Term graph,  the process of inserting all these terms might be time-consuming.** <br> You have the option to terminate the process at any point by using the keyboard shortcut: ```Ctrl + C``` 
