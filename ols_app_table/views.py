@@ -12,13 +12,13 @@ class EFOTermTableViewSet(viewsets.ModelViewSet):
     http_method_names = ['get']
 
     @paginate
-    @action(detail=True)
-    def parents(self, request, pk=None):
+    @action(detail=True, url_path='parents')
+    def get_parents(self, request, pk=None):
         return EFOTerm.objects.filter(children__child=pk)
 
     @paginate
-    @action(detail=True)
-    def children(self, request, pk=None):
+    @action(detail=True, url_path='children')
+    def get_children(self, request, pk=None):
         return EFOTerm.objects.filter(parents__parent=pk)
 
     def get_queryset(self):
